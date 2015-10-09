@@ -1,0 +1,72 @@
+# Translation for the Date Search plugin for Omeka.
+# Copyright (C) 2015 Gero Zahn
+# This file is distributed under the same license as the Omeka package.
+# Gero Zahn <gero.zahn@upb.de>, 2015.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DateSearch\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-DateSearch/issues\n"
+"POT-Creation-Date: 2012-01-09 21:49-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Gero Zahn<gero.zahn@upb.de>\n"
+"Language-Team: en_US <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: config_form.php:3
+msgid "Use Gregorian / Julian Prefixes"
+msgstr ""
+
+#: config_form.php:8
+msgid ""
+"Check this if you want to use [G] / [J] prefixes to indicate that a date is "
+"meant to be specifying a Gregorian or a Julian date or timespan."
+msgstr ""
+
+#: config_form.php:15
+msgid "Scan All Text Fields"
+msgstr ""
+
+#: config_form.php:20
+msgid ""
+"Check this if you want date / timespan processing to be carried out within "
+"all of an item's text fields."
+msgstr ""
+
+#: config_form.php:27
+msgid "Limit Scan to Fields"
+msgstr ""
+
+#: config_form.php:32
+msgid ""
+"Please select the elements i.e. fields that the scan for dates should be "
+"limited to.<br><em>Please note:</em> To select multiple entries, try holding "
+"the Ctrl key (Windows) or the Cmd key (Mac) while clicking."
+msgstr ""
+
+#: config_form.php:41
+msgid "Scan Inside Relationship Comments"
+msgstr ""
+
+#: config_form.php:46
+msgid ""
+"The Item Relationships add-on is installed, and it has been patched to "
+"feature relationship comments. Check this if you want Date Search to scan "
+"inside relationship comments."
+msgstr ""
+
+#: views/shared/common/date-search-advanced-search.php:3
+msgid "Date Search"
+msgstr ""
+
+#: views/shared/common/date-search-advanced-search.php:8
+msgid ""
+"You may enter a date in the forms YYYY, YYYY-MM, or YYYY-MM-DD, or a "
+"timespan consisting of two dates, separated by a hypen (\"-\"). Date Search "
+"will find items that contain dates and timespans matching your search. For "
+"example: \"1970\" will find an item mentioning the timespan \"1960-1980\"."
+msgstr ""

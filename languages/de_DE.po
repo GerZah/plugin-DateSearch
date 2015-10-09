@@ -1,0 +1,89 @@
+# Translation for the Date Search plugin for Omeka.
+# Copyright (C) 2015 Gero Zahn
+# This file is distributed under the same license as the Omeka package.
+# Gero Zahn <gero.zahn@upb.de>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DateSearch\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-DateSearch/issues\n"
+"POT-Creation-Date: 2012-01-09 21:49-0500\n"
+"PO-Revision-Date: 2015-10-09 10:59+0200\n"
+"Last-Translator: Gero Zahn <gero.zahn@upb.de>\n"
+"Language-Team: de_DE <LL@li.org>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+
+#: config_form.php:3
+msgid "Use Gregorian / Julian Prefixes"
+msgstr "Gregorianische / Julianische Präfixe verwenden"
+
+#: config_form.php:8
+msgid ""
+"Check this if you want to use [G] / [J] prefixes to indicate that a date is "
+"meant to be specifying a Gregorian or a Julian date or timespan."
+msgstr ""
+"Wählen Sie dies aus, wenn Sie [G] / [J] Präfixe verwenden wollen, um "
+"darzustellen, dass es sich bei einem Datum um ein Gregorianisches oder ein "
+"Julianisches Datum bzw. eine Zeitspanne handelt."
+
+#: config_form.php:15
+msgid "Scan All Text Fields"
+msgstr "Alle Textfelder durchsuchen"
+
+#: config_form.php:20
+msgid ""
+"Check this if you want date / timespan processing to be carried out within "
+"all of an item's text fields."
+msgstr ""
+"Wählen Sie dies aus, wenn Sie Daten oder Zeitspannen in allen Textfeldern "
+"eines Objektes suchen wollen."
+
+#: config_form.php:27
+msgid "Limit Scan to Fields"
+msgstr "Suche auf Felder beschränken"
+
+#: config_form.php:32
+msgid ""
+"Please select the elements i.e. fields that the scan for dates should be "
+"limited to.<br><em>Please note:</em> To select multiple entries, try holding "
+"the Ctrl key (Windows) or the Cmd key (Mac) while clicking."
+msgstr ""
+"Bitte wählen Sie die Elemente bzw. Felder, auf die die Suche nach Daten "
+"beschränkt sein soll.<br><em>Bitte beachten Sie:</em> Um mehrere Einträge "
+"auszuwählen, halten Sie bitte während des Klickens die Strg-Taste (Windows) "
+"bzw. die Command-Taste (Mac) gedrückt."
+
+#: config_form.php:41
+msgid "Scan Inside Relationship Comments"
+msgstr "Innerhalb von Objekt-Beziehungs-Kommentaren suchen"
+
+#: config_form.php:46
+msgid ""
+"The Item Relationships add-on is installed, and it has been patched to "
+"feature relationship comments. Check this if you want Date Search to scan "
+"inside relationship comments."
+msgstr ""
+"Das Objekt-Beziehungen (Item Relationships) Add-on ist installiert, und es "
+"ist gepatcht, um Beziehungs-Kommentare zu unterstützen. Wählen Sie dies aus, "
+"wenn die Suche innerhalb der Beziehungskommentare erfolgen soll."
+
+#: views/shared/common/date-search-advanced-search.php:3
+msgid "Date Search"
+msgstr "Datums-Suche"
+
+#: views/shared/common/date-search-advanced-search.php:8
+msgid ""
+"You may enter a date in the forms YYYY, YYYY-MM, or YYYY-MM-DD, or a "
+"timespan consisting of two dates, separated by a hypen (\"-\"). Date Search "
+"will find items that contain dates and timespans matching your search. For "
+"example: \"1970\" will find an item mentioning the timespan \"1960-1980\"."
+msgstr ""
+"Sie können ein Datum in der Form YYYY, YYYY-MM oder YYYY-MM-DD eingeben, "
+"oder eine Zeitspanne, bestehend aus zwei Daten, getrennt durch einen "
+"Bindestrich (\"-\"). Die Datums-Suche findet Objekte, die Daten oder "
+"Zeitspannen enthalten, die zur Suche passen. Beispielsweise wird die Suche "
+"nach \"1970\" ein Objekt finden, das die Zeitspanne \"1960-1980\" erwähnt."
