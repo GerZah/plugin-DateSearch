@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: DateSearch\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-DateSearch/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2015-10-09 10:59+0200\n"
+"PO-Revision-Date: 2015-10-27 18:40+0100\n"
 "Last-Translator: Gero Zahn <gero.zahn@upb.de>\n"
 "Language-Team: de_DE <LL@li.org>\n"
 "Language: de_DE\n"
@@ -17,7 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.5\n"
 
-#: config_form.php:3
+#: #: DateSearchPlugin.php:324
+msgid "Date Search Debug Output"
+msgstr "Datums-Suche Debug-Ausgabe"
+
 msgid "Use Gregorian / Julian Prefixes"
 msgstr "Gregorianische / Julianische Präfixe verwenden"
 
@@ -29,6 +32,18 @@ msgstr ""
 "Wählen Sie dies aus, wenn Sie [G] / [J] Präfixe verwenden wollen, um "
 "darzustellen, dass es sich bei einem Datum um ein Gregorianisches oder ein "
 "Julianisches Datum bzw. eine Zeitspanne handelt."
+
+#: config_form.php:12
+msgid "no"
+msgstr "nein"
+
+#: config_form.php:12
+msgid "yes"
+msgstr "ja"
+
+#: config_form.php:12
+msgid "optional"
+msgstr "optional"
 
 #: config_form.php:15
 msgid "Scan All Text Fields"
@@ -70,6 +85,37 @@ msgstr ""
 "Das Objekt-Beziehungen (Item Relationships) Add-on ist installiert, und es "
 "ist gepatcht, um Beziehungs-Kommentare zu unterstützen. Wählen Sie dies aus, "
 "wenn die Suche innerhalb der Beziehungskommentare erfolgen soll."
+
+#: config_form.php:85
+msgid "Trigger Re-indexing of Existing Content"
+msgstr "Re-Indexierung von bestehendem Inhalt auslösen"
+
+#: config_form.php:90
+msgid ""
+"<strong>Please note:</strong> Checking this box will re-generate the index "
+"<em>now</em> and exactly <em>once</em>. This action will be carried out as "
+"soon as you click on \"Save Changes\"."
+msgstr ""
+"<strong>Bitte beachten:</strong> Wenn Sie diese Option auswählen, wird der "
+"Index <em>jetzt</em> und genau <em>einmal</em>neu generiert. Diese Aktion "
+"wird durchgeführt, sobald Sie auf „Änderungen speichern“ klicken."
+
+#: config_form.php:97
+msgid ""
+"<em>Explanation:</em> Date Search relies on a search index that is being "
+"created during content maintenance in the background. However, existing "
+"content will not be re-indexed automatically. So if you have existing "
+"content or modify your settings, you should re-generate the search index."
+msgstr ""
+"<em>Erläuterung:</em> Die Datums-Suche stützt sich auf einen Suchindex, der "
+"während der Inhaltspflege im Hintergrund erstellt wird. Jedoch werden "
+"vorhandene Inhalte nicht automatisch erneut indexiert. Sofern Ihre Datenbank "
+"also über bestehende Inhalte verfügt, oder wenn Sie Ihre Einstellungen "
+"ändern, sollten Sie den Suchindex neu generieren."
+
+#: config_form.php:106
+msgid "Debug Output"
+msgstr "Debug-Ausgabe"
 
 #: views/shared/common/date-search-advanced-search.php:3
 msgid "Date Search"

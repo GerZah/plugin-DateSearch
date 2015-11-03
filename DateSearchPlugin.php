@@ -19,6 +19,8 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 		'after_save_item', # preprocess saved item for dates / timespans
 		'after_delete_item', # delete deleted item's preprocessed dates / timespans
 		'admin_items_search', # add a time search field to the advanced search panel in admin
+		'public_items_search', # add a time search field to the advanced search panel in public
+		'admin_items_show_sidebar', # Debug output of stored dates/timespans in item's sidebar (if activated)
 		'items_browse_sql', # filter for a date after search page submission.
 	);
 
@@ -27,6 +29,7 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 		'date_search_search_all_fields' => 1,
 		'date_search_limit_fields' => "[]",
 		'date_search_search_rel_comments' => 1,
+		'date_search_debug_output' => 0,
 	);
 
 	/**
@@ -77,7 +80,7 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 	 * Display the plugin configuration form.
 	 */
 	public static function hookConfigForm() {
-		$useGregJulPrexifes = (int)(boolean) get_option('date_search_use_gregjul_prefixes');
+		$useGregJulPrefixes = intval(get_option('date_search_use_gregjul_prefixes'));
 		$searchAllFields = (int)(boolean) get_option('date_search_search_all_fields');
 
 		$db = get_db();
@@ -93,6 +96,8 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 		$withRelComments=SELF::_withRelComments();
 		$searchRelComments = (int)(boolean) get_option('date_search_search_rel_comments');
 
+		$debugOutput = (int)(boolean) get_option('date_search_debug_output'); # comment line to remove debug output panel
+
 		require dirname(__FILE__) . '/config_form.php';
 	}
 
@@ -101,47 +106,45 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 	 */
 	public static function hookConfig() {
 		// Gregorian / Julian Prefix switch
-		$prevUseGregJulPrexifes = (int)(boolean) get_option('date_search_use_gregjul_prefixes');
-		$newUseGregJulPrexifes = (int)(boolean) $_POST['date_search_use_gregjul_prefixes'];
-		set_option('date_search_use_gregjul_prefixes', $newUseGregJulPrexifes);
+		$useGregJulPrefixes = intval($_POST['date_search_use_gregjul_prefixes']);
+		set_option('date_search_use_gregjul_prefixes', $useGregJulPrefixes);
 
 		// Search All Fields switch
-		$prevSearchAllFields = (int)(boolean) get_option('date_search_search_all_fields');
-		$newSearchAllFields = (int)(boolean) $_POST['date_search_search_all_fields'];
-		set_option('date_search_search_all_fields', $newSearchAllFields);
+		$searchAllFields = (int)(boolean) $_POST['date_search_search_all_fields'];
+		set_option('date_search_search_all_fields', $searchAllFields);
 
 		// Limit Fields list (in case "Search All Fields" is false
-		$oldLimitFields = get_option('date_search_limit_fields');
-		$newLimitFields = array();
+		$limitFields = array();
 		$postIds=false;
 		if (isset($_POST["date_search_limit_fields"])) { $postIds = $_POST["date_search_limit_fields"]; }
 		if (is_array($postIds)) {
 			foreach($postIds as $postId) {
 				$postId = intval($postId);
-				if ($postId) { $newLimitFields[] = $postId; }
+				if ($postId) { $limitFields[] = $postId; }
 			}
 		}
-		sort($newLimitFields);
-		$newLimitFields = json_encode($newLimitFields);
-		set_option('date_search_limit_fields', $newLimitFields);
+		sort($limitFields);
+		$limitFields = json_encode($limitFields);
+		set_option('date_search_limit_fields', $limitFields);
 
 		// Search Relationship Comments switch
-		$prevSearchRelComments = (int)(boolean) get_option('date_search_search_rel_comments');
-		$newSearchRelComments = (int)(boolean) $_POST['date_search_search_rel_comments'];
-		set_option('date_search_search_rel_comments', $newSearchRelComments);
+		$searchRelComments = (int)(boolean) $_POST['date_search_search_rel_comments'];
+		set_option('date_search_search_rel_comments', $searchRelComments);
 
-		$reprocess = false;
-		$reprocess = ( ($reprocess) or ($prevUseGregJulPrexifes != $newUseGregJulPrexifes) ); 
-		$reprocess = ( ($reprocess) or ($prevSearchAllFields != $newSearchAllFields) ); 
-		$reprocess = ( ($reprocess) or ( (!$newSearchAllFields) && ($oldLimitFields != $newLimitFields) ) ); 
-		$reprocess = ( ($reprocess) or ( (!$newSearchAllFields) && ($prevSearchRelComments != $newSearchRelComments) ) ); 
+		// Debug Output switch -- if present
+		$debugOutput = 0; // Sanity
+		if (isset($_POST['date_search_debug_output'])) {
+			$debugOutput = (int)(boolean) $_POST['date_search_debug_output'];
+		}
+		set_option('date_search_debug_output', $debugOutput);
 
+		$reprocess = (int)(boolean) $_POST['date_search_trigger_reindex'];
 		if ($reprocess) { SELF::_batchProcessExistingItems(); }
 		# echo "<pre>"; print_r($_POST); echo "</pre>"; die();
 	}
 
 	/**
-	 * Preprocess ALL existing items �which could be rather EVIL in huge installations
+	 * Preprocess ALL existing items which could be rather EVIL in huge installations
 	 */
 	private function _batchProcessExistingItems() {
 		$db = get_db();
@@ -262,7 +265,7 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 
 					$elementTexts = $db -> fetchAll("select text from `$db->ElementTexts`".
 																					" where record_id=$item_id".
-																					" and element_id in ($elementIds)");
+																					" and element_id in $elementIds");
 					if ($elementTexts) {
 						$text = "";
 						foreach($elementTexts as $elementText) { $text .= " " . $elementText["text"]; }
@@ -305,8 +308,46 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 	/**
 	 * Display the time search form on the admin advanced search page
 	 */
-	public function hookAdminItemsSearch() {
+	protected function _ItemsSearch() {
 		echo common('date-search-advanced-search', null);
+	}
+
+	/**
+	 * Display the time search form on the admin advanced search page in admin
+	 */
+	public function hookAdminItemsSearch() { SELF::_itemsSearch(); }
+
+	/**
+	 * Display the time search form on the admin advanced search page in public
+	 */
+	public function hookPublicItemsSearch() { SELF::_itemsSearch(); }
+
+  /**
+  * Debug output of stored dates/timespans in item's sidebar (if activated)
+  *
+  * @param Item $item
+  */
+  public function hookAdminItemsShowSidebar($args) {
+		$debugOutput = (int)(boolean) get_option('date_search_debug_output');
+		if ($debugOutput) {
+			$itemID = $args['item']['id'];
+			if ($itemID) {
+				echo "<div class='panel'><h4>".__("Date Search Debug Output")."</h4>\n";
+				$db = get_db();
+				$sql = "select * from `$db->DateSearchDates` where item_id=$itemID";
+				$timespans = $db->fetchAll($sql);
+				if ($timespans) {
+					echo "<ul>\n";
+					foreach($timespans as $timespan) {
+						$fromDate = $timespan["fromdate"];
+						$toDate = $timespan["todate"];
+						echo "<li>". $fromDate . " … ". $toDate . "</li>\n";
+					}
+					echo "</ul>\n";
+				}
+				echo "</div>\n";
+			}
+		}
 	}
 
 	/**
@@ -372,11 +413,17 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 		$julGregPrefix = $regEx["julGregPrefix"];
 		$date = $regEx["date"];
 
-		$useGregJulPrexifes = intval(get_option('date_search_use_gregjul_prefixes'));
-		$mainRegEx = ( $useGregJulPrexifes ? $regEx["julGregDateTimeSpan"] : $regEx["dateTimespan"] );
+		$useGregJulPrefixes = intval(get_option('date_search_use_gregjul_prefixes'));
+
+		$mainRegEx = $regEx["dateTimespan"]; // Default: Ignore prefixes
+		switch ($useGregJulPrefixes) {
+			case 1 : $mainRegEx = $regEx["julGregDateTimeSpan"]; break; // 1 == old "true": Require [J]/[G]
+			// 2 == optional prefix: honor if present, but also parse dates without prefix
+			case 2 : $mainRegEx = $regEx["optionalJulGregTimeSpan"]; break;
+		}
 
 		$allCount = preg_match_all( "($mainRegEx)i", $text, $allMatches);
-		# echo "<pre>Count: $allCount\n"; print_r($allMatches); die("</pre>");
+		# echo "<pre>Count: $allCount\n" . print_r($allMatches,true) . "</pre>";
 
 		$cookedDates = array();
 		foreach($allMatches[0] as $singleMatch) {
@@ -388,21 +435,22 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 
 			$storeDate = true;
 
-			if ($useGregJulPrexifes) { // Gregorian / Julian date prefixes
+			if ($useGregJulPrefixes>0) { // Gregorian / Julian date prefixes
 				$julGreg = preg_match( "($julGregPrefix)i", $singleMatch, $julGregMatch );
 				$julGregJG = ($julGreg == 1 ? strtoupper($julGregMatch[1]) : null ); // "G" or "J" or null
-				# echo "<pre>$julGreg / $julGregJG: "; print_r($julGregMatch); die("</pre>");
+				# echo "<pre>$julGreg / $julGregJG: " .  print_r($julGregMatch,true) . "</pre>";
 
 				switch ($julGregJG) {
 					case "J" : $storeDate = ($timespan[0] <= "1582-10-04"); break;
 					case "G" : $storeDate = ($timespan[1] >= "1582-10-15"); break;
 				}
-				# echo "<pre>StoreDate: $storeDate\n"; print_r($timespan); die("</pre>");
+				# echo "<pre>StoreDate: $storeDate\n" . print_r($timespan,true) . "</pre>";
 			}
 
 			if ($storeDate) { $cookedDates[] = $timespan; }
 		}
-		#echo "<pre>"; print_r($cookedDates); die("</pre>");
+		# echo "<pre>" . print_r($cookedDates,true) . "</pre>";
+		# die();
 
 		return $cookedDates;
 	}
@@ -424,6 +472,7 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 
 		$julGregPrefix = "\[([J,G])\] ";
 		$julGregDateTimeSpan = $julGregPrefix.$dateTimespan;
+		$optionalJulGregTimeSpan = "(?:$julGregDateTimeSpan|$dateTimespan)";
 
 		$result=array(
 								"year" => $year,
@@ -435,6 +484,7 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 								"dateTimespan" => $dateTimespan,
 								"julGregPrefix" => $julGregPrefix,
 								"julGregDateTimeSpan" => $julGregDateTimeSpan,
+								"optionalJulGregTimeSpan" => $optionalJulGregTimeSpan,
 							);
 
 		return $result;
