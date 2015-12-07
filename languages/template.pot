@@ -17,8 +17,48 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: DateSearchPlugin.php:324
+#: DateSearchPlugin.php:336
 msgid "Date Search Debug Output"
+msgstr ""
+
+#: DateSearchPlugin.php:432
+msgid "Time Span"
+msgstr ""
+
+#: DateSearchPlugin.php:433
+msgid "Gregorian"
+msgstr ""
+
+#: DateSearchPlugin.php:434
+msgid "Julian"
+msgstr ""
+
+#: DateSearchPlugin.php:435
+msgid "Date (without prefix)"
+msgstr ""
+
+#: DateSearchPlugin.php:436
+msgid "Convert"
+msgstr ""
+
+#: DateSearchPlugin.php:437
+msgid "Please select a target text area first."
+msgstr ""
+
+#: DateSearchPlugin.php:439
+msgid "Please select a date or time span to convert."
+msgstr ""
+
+#: DateSearchPlugin.php:440
+msgid "Can not edit selected date as %."
+msgstr ""
+
+#: DateSearchPlugin.php:441
+msgid "Can not convert selected date to %, as it is already %."
+msgstr ""
+
+#: DateSearchPlugin.php:442
+msgid "Date Entry"
 msgstr ""
 
 #: config_form.php:3

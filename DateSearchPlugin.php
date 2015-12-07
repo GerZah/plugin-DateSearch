@@ -22,6 +22,7 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 		'public_items_search', # add a time search field to the advanced search panel in public
 		'admin_items_show_sidebar', # Debug output of stored dates/timespans in item's sidebar (if activated)
 		'items_browse_sql', # filter for a date after search page submission.
+		'admin_head', # add calendar sheet / date picker / Greg/Jul conversion functionality
 	);
 
 	protected $_options = array(
@@ -60,7 +61,7 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 
 		SELF::_installOptions();
 
-		SELF::_batchProcessExistingItems();
+		# SELF::_batchProcessExistingItems(); # Don't ... Do it only if configured.
 	}
 
 	/**
@@ -387,6 +388,75 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 
 		}
 
+	}
+
+	# ------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Sdd calendar sheet / date picker / Greg/Jul conversion functionality
+	 */
+	public function hookAdminHead() {
+		$request = Zend_Controller_Front::getInstance()->getRequest();
+
+		$module = $request->getModuleName();
+		if (is_null($module)) { $module = 'default'; }
+		$controller = $request->getControllerName();
+		$action = $request->getActionName();
+
+		if ($module === 'default'
+				&& $controller === 'items'
+				&& in_array($action, array('add', 'edit'))) {
+
+			queue_js_file('datesearch');
+			queue_js_file('rangyinputs-jquery');
+			queue_css_file('datesearch');
+
+			queue_js_file('jquery.plugin.min');
+			queue_js_file('jquery.mousewheel.min');
+
+			queue_js_file('jquery.calendars.all.min');
+			queue_js_file('jquery.calendars.julian.min');
+			queue_js_file('jquery.calendars.picker.min');
+
+			$locale = get_html_lang();
+			$underscore=strpos($locale, "-");
+			$locale = ($underscore ? substr($locale,0,$underscore) : $locale);
+
+			if ($locale!="en") {
+				queue_js_file('jquery.calendars-'.$locale);
+				queue_js_file('jquery.calendars.picker-'.$locale);
+			}
+
+			queue_css_file('jquery.calendars.picker');
+
+			$timespan    = __("Time Span");
+			$gregorian   = __("Gregorian");
+			$julian      = __("Julian");
+			$date        = __("Date (without prefix)");
+			$convert     = __("Convert");
+			$selectFirst = __("Please select a target text area first.");
+			$cancel      = __("Cancel");
+			$selectDate  = __("Please select a date or time span to convert.");
+			$cantEdit    = __("Can not edit selected date as %.");
+			$cantConvert = __("Can not convert selected date to %, as it is already %.");
+			$dateEntry   = __("Date Entry");
+
+			queue_js_string("
+				var dateSearchLocale='$locale';
+				var dateSearchTimeSpan='$timespan';
+				var dateSearchConvert='$convert';
+				var dateSearchGregorian='$gregorian';
+				var dateSearchJulian='$julian';
+				var dateSearchDate='$date';
+				var dateSearchSelectFirst='$selectFirst';
+				var dateSearchCancel='$cancel';
+				var dateSearchSelectDate='$selectDate';
+				var dateSearchCantEdit='$cantEdit';
+				var dateSearchCantConvert='$cantConvert';
+				var dateSearchDateEntry='$dateEntry';
+			");
+
+		}
 	}
 
 	# ------------------------------------------------------------------------------------------------------

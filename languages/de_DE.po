@@ -1,37 +1,74 @@
 # Translation for the Date Search plugin for Omeka.
 # Copyright (C) 2015 Gero Zahn
 # This file is distributed under the same license as the Omeka package.
-# Gero Zahn <gero.zahn@upb.de>, 2015.
 #
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: DateSearch\n"
+"Project-Id-Version: WeSa Omeka\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-DateSearch/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2015-10-27 18:40+0100\n"
-"Last-Translator: Gero Zahn <gero.zahn@upb.de>\n"
-"Language-Team: de_DE <LL@li.org>\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2015-11-23 11:41+0100\n"
+"Last-Translator: githanjalli <anjallinhere@gmail.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/upb/wesa-omeka/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.6\n"
 
-#: #: DateSearchPlugin.php:324
+#: DateSearchPlugin.php:336
 msgid "Date Search Debug Output"
 msgstr "Datums-Suche Debug-Ausgabe"
 
+#: DateSearchPlugin.php:432
+msgid "Time Span"
+msgstr "Zeitspanne"
+
+#: DateSearchPlugin.php:433
+msgid "Gregorian"
+msgstr "Gregorianisch"
+
+#: DateSearchPlugin.php:434
+msgid "Julian"
+msgstr "Julianisch"
+
+#: DateSearchPlugin.php:435
+msgid "Date (without prefix)"
+msgstr "Datum (ohne Präfix)"
+
+#: DateSearchPlugin.php:436
+msgid "Convert"
+msgstr "Konvertieren"
+
+#: DateSearchPlugin.php:437
+msgid "Please select a target text area first."
+msgstr "Bitte wählen Sie zuerst ein Eingabefeld als Ziel."
+
+#: DateSearchPlugin.php:439
+msgid "Please select a date or time span to convert."
+msgstr "Bitte wählen Sie ein Datum oder eine Zeitspanne zur Konversion."
+
+#: DateSearchPlugin.php:440
+msgid "Can not edit selected date as %."
+msgstr "Selektiertes Datum nicht als % editierbar."
+
+#: DateSearchPlugin.php:441
+msgid "Can not convert selected date to %, as it is already %."
+msgstr "Kann selektiertes Datum nicht nach % konvertieren, da es bereits % ist."
+
+#: DateSearchPlugin.php:442
+msgid "Date Entry"
+msgstr "Datumseingabe"
+
+#: config_form.php:3
 msgid "Use Gregorian / Julian Prefixes"
 msgstr "Gregorianische / Julianische Präfixe verwenden"
 
 #: config_form.php:8
-msgid ""
-"Check this if you want to use [G] / [J] prefixes to indicate that a date is "
-"meant to be specifying a Gregorian or a Julian date or timespan."
-msgstr ""
-"Wählen Sie dies aus, wenn Sie [G] / [J] Präfixe verwenden wollen, um "
-"darzustellen, dass es sich bei einem Datum um ein Gregorianisches oder ein "
-"Julianisches Datum bzw. eine Zeitspanne handelt."
+msgid "Check this if you want to use [G] / [J] prefixes to indicate that a date is meant to be specifying a Gregorian or a Julian date or timespan."
+msgstr "Wählen Sie dies aus, wenn Sie [G] / [J] Präfixe verwenden wollen, um darzustellen, dass es sich bei einem Datum um ein Gregorianisches oder ein Julianisches Datum bzw. eine Zeitspanne handelt."
 
 #: config_form.php:12
 msgid "no"
@@ -50,68 +87,36 @@ msgid "Scan All Text Fields"
 msgstr "Alle Textfelder durchsuchen"
 
 #: config_form.php:20
-msgid ""
-"Check this if you want date / timespan processing to be carried out within "
-"all of an item's text fields."
-msgstr ""
-"Wählen Sie dies aus, wenn Sie Daten oder Zeitspannen in allen Textfeldern "
-"eines Objektes suchen wollen."
+msgid "Check this if you want date / timespan processing to be carried out within all of an item's text fields."
+msgstr "Wählen Sie dies aus, wenn Sie Daten oder Zeitspannen in allen Textfeldern eines Objektes suchen wollen."
 
 #: config_form.php:27
 msgid "Limit Scan to Fields"
 msgstr "Suche auf Felder beschränken"
 
 #: config_form.php:32
-msgid ""
-"Please select the elements i.e. fields that the scan for dates should be "
-"limited to.<br><em>Please note:</em> To select multiple entries, try holding "
-"the Ctrl key (Windows) or the Cmd key (Mac) while clicking."
-msgstr ""
-"Bitte wählen Sie die Elemente bzw. Felder, auf die die Suche nach Daten "
-"beschränkt sein soll.<br><em>Bitte beachten Sie:</em> Um mehrere Einträge "
-"auszuwählen, halten Sie bitte während des Klickens die Strg-Taste (Windows) "
-"bzw. die Command-Taste (Mac) gedrückt."
+msgid "Please select the elements i.e. fields that the scan for dates should be limited to.<br><em>Please note:</em> To select multiple entries, try holding the Ctrl key (Windows) or the Cmd key (Mac) while clicking."
+msgstr "Bitte wählen Sie die Elemente bzw. Felder, auf die die Suche nach Daten beschränkt sein soll.<br><em>Bitte beachten Sie:</em> Um mehrere Einträge auszuwählen, halten Sie bitte während des Klickens die Strg-Taste (Windows) bzw. die Command-Taste (Mac) gedrückt."
 
 #: config_form.php:41
 msgid "Scan Inside Relationship Comments"
 msgstr "Innerhalb von Objekt-Beziehungs-Kommentaren suchen"
 
 #: config_form.php:46
-msgid ""
-"The Item Relationships add-on is installed, and it has been patched to "
-"feature relationship comments. Check this if you want Date Search to scan "
-"inside relationship comments."
-msgstr ""
-"Das Objekt-Beziehungen (Item Relationships) Add-on ist installiert, und es "
-"ist gepatcht, um Beziehungs-Kommentare zu unterstützen. Wählen Sie dies aus, "
-"wenn die Suche innerhalb der Beziehungskommentare erfolgen soll."
+msgid "The Item Relationships add-on is installed, and it has been patched to feature relationship comments. Check this if you want Date Search to scan inside relationship comments."
+msgstr "Das Objekt-Beziehungen (Item Relationships) Add-on ist installiert, und es ist gepatcht, um Beziehungs-Kommentare zu unterstützen. Wählen Sie dies aus, wenn die Suche innerhalb der Beziehungskommentare erfolgen soll."
 
 #: config_form.php:85
 msgid "Trigger Re-indexing of Existing Content"
 msgstr "Re-Indexierung von bestehendem Inhalt auslösen"
 
 #: config_form.php:90
-msgid ""
-"<strong>Please note:</strong> Checking this box will re-generate the index "
-"<em>now</em> and exactly <em>once</em>. This action will be carried out as "
-"soon as you click on \"Save Changes\"."
-msgstr ""
-"<strong>Bitte beachten:</strong> Wenn Sie diese Option auswählen, wird der "
-"Index <em>jetzt</em> und genau <em>einmal</em>neu generiert. Diese Aktion "
-"wird durchgeführt, sobald Sie auf „Änderungen speichern“ klicken."
+msgid "<strong>Please note:</strong> Checking this box will re-generate the index <em>now</em> and exactly <em>once</em>. This action will be carried out as soon as you click on \"Save Changes\"."
+msgstr "<strong>Bitte beachten:</strong> Wenn Sie diese Option auswählen, wird der Index <em>jetzt</em> und genau <em>einmal</em>neu generiert. Diese Aktion wird durchgeführt, sobald Sie auf „Änderungen speichern“ klicken."
 
 #: config_form.php:97
-msgid ""
-"<em>Explanation:</em> Date Search relies on a search index that is being "
-"created during content maintenance in the background. However, existing "
-"content will not be re-indexed automatically. So if you have existing "
-"content or modify your settings, you should re-generate the search index."
-msgstr ""
-"<em>Erläuterung:</em> Die Datums-Suche stützt sich auf einen Suchindex, der "
-"während der Inhaltspflege im Hintergrund erstellt wird. Jedoch werden "
-"vorhandene Inhalte nicht automatisch erneut indexiert. Sofern Ihre Datenbank "
-"also über bestehende Inhalte verfügt, oder wenn Sie Ihre Einstellungen "
-"ändern, sollten Sie den Suchindex neu generieren."
+msgid "<em>Explanation:</em> Date Search relies on a search index that is being created during content maintenance in the background. However, existing content will not be re-indexed automatically. So if you have existing content or modify your settings, you should re-generate the search index."
+msgstr "<em>Erläuterung:</em> Die Datums-Suche stützt sich auf einen Suchindex, der während der Inhaltspflege im Hintergrund erstellt wird. Jedoch werden vorhandene Inhalte nicht automatisch erneut indexiert. Sofern Ihre Datenbank also über bestehende Inhalte verfügt, oder wenn Sie Ihre Einstellungen ändern, sollten Sie den Suchindex neu generieren."
 
 #: config_form.php:106
 msgid "Debug Output"
@@ -122,14 +127,5 @@ msgid "Date Search"
 msgstr "Datums-Suche"
 
 #: views/shared/common/date-search-advanced-search.php:8
-msgid ""
-"You may enter a date in the forms YYYY, YYYY-MM, or YYYY-MM-DD, or a "
-"timespan consisting of two dates, separated by a hypen (\"-\"). Date Search "
-"will find items that contain dates and timespans matching your search. For "
-"example: \"1970\" will find an item mentioning the timespan \"1960-1980\"."
-msgstr ""
-"Sie können ein Datum in der Form YYYY, YYYY-MM oder YYYY-MM-DD eingeben, "
-"oder eine Zeitspanne, bestehend aus zwei Daten, getrennt durch einen "
-"Bindestrich (\"-\"). Die Datums-Suche findet Objekte, die Daten oder "
-"Zeitspannen enthalten, die zur Suche passen. Beispielsweise wird die Suche "
-"nach \"1970\" ein Objekt finden, das die Zeitspanne \"1960-1980\" erwähnt."
+msgid "You may enter a date in the forms YYYY, YYYY-MM, or YYYY-MM-DD, or a timespan consisting of two dates, separated by a hypen (\"-\"). Date Search will find items that contain dates and timespans matching your search. For example: \"1970\" will find an item mentioning the timespan \"1960-1980\"."
+msgstr "Sie können ein Datum in der Form YYYY, YYYY-MM oder YYYY-MM-DD eingeben, oder eine Zeitspanne, bestehend aus zwei Daten, getrennt durch einen Bindestrich (\"-\"). Die Datums-Suche findet Objekte, die Daten oder Zeitspannen enthalten, die zur Suche passen. Beispielsweise wird die Suche nach \"1970\" ein Objekt finden, das die Zeitspanne \"1960-1980\" erwähnt."
