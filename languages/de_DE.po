@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WeSa Omeka\n"
-"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-DateSearch/issues\n"
+"Report-Msgid-Bugs-To: http://github.com/GerZah/plugin-DateSearch/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2015-11-23 11:41+0100\n"
+"PO-Revision-Date: 2016-02-10 14:17+0100\n"
 "Last-Translator: githanjalli <anjallinhere@gmail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/upb/wesa-omeka/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -18,47 +18,47 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.6\n"
 
-#: DateSearchPlugin.php:336
+#: DateSearchPlugin.php:329
 msgid "Date Search Debug Output"
 msgstr "Datums-Suche Debug-Ausgabe"
 
-#: DateSearchPlugin.php:432
+#: DateSearchPlugin.php:425
 msgid "Time Span"
 msgstr "Zeitspanne"
 
-#: DateSearchPlugin.php:433
+#: DateSearchPlugin.php:426
 msgid "Gregorian"
 msgstr "Gregorianisch"
 
-#: DateSearchPlugin.php:434
+#: DateSearchPlugin.php:427
 msgid "Julian"
 msgstr "Julianisch"
 
-#: DateSearchPlugin.php:435
+#: DateSearchPlugin.php:428
 msgid "Date (without prefix)"
 msgstr "Datum (ohne Präfix)"
 
-#: DateSearchPlugin.php:436
+#: DateSearchPlugin.php:429
 msgid "Convert"
 msgstr "Konvertieren"
 
-#: DateSearchPlugin.php:437
+#: DateSearchPlugin.php:430
 msgid "Please select a target text area first."
 msgstr "Bitte wählen Sie zuerst ein Eingabefeld als Ziel."
 
-#: DateSearchPlugin.php:439
+#: DateSearchPlugin.php:432
 msgid "Please select a date or time span to convert."
 msgstr "Bitte wählen Sie ein Datum oder eine Zeitspanne zur Konversion."
 
-#: DateSearchPlugin.php:440
+#: DateSearchPlugin.php:433
 msgid "Can not edit selected date as %."
 msgstr "Selektiertes Datum nicht als % editierbar."
 
-#: DateSearchPlugin.php:441
+#: DateSearchPlugin.php:434
 msgid "Can not convert selected date to %, as it is already %."
 msgstr "Kann selektiertes Datum nicht nach % konvertieren, da es bereits % ist."
 
-#: DateSearchPlugin.php:442
+#: DateSearchPlugin.php:435
 msgid "Date Entry"
 msgstr "Datumseingabe"
 

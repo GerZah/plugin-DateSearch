@@ -7,57 +7,58 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DateSearch\n"
-"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-DateSearch/issues\n"
+"Report-Msgid-Bugs-To: http://github.com/GerZah/plugin-DateSearch/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Gero Zahn<gero.zahn@upb.de>\n"
-"Language-Team: en_US <LL@li.org>\n"
-"Language: \n"
+"Language-Team: English (https://www.transifex.com/upb/wesa-omeka/language/"
+"en/)\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: DateSearchPlugin.php:336
+#: DateSearchPlugin.php:329
 msgid "Date Search Debug Output"
 msgstr ""
 
-#: DateSearchPlugin.php:432
+#: DateSearchPlugin.php:425
 msgid "Time Span"
 msgstr ""
 
-#: DateSearchPlugin.php:433
+#: DateSearchPlugin.php:426
 msgid "Gregorian"
 msgstr ""
 
-#: DateSearchPlugin.php:434
+#: DateSearchPlugin.php:427
 msgid "Julian"
 msgstr ""
 
-#: DateSearchPlugin.php:435
+#: DateSearchPlugin.php:428
 msgid "Date (without prefix)"
 msgstr ""
 
-#: DateSearchPlugin.php:436
+#: DateSearchPlugin.php:429
 msgid "Convert"
 msgstr ""
 
-#: DateSearchPlugin.php:437
+#: DateSearchPlugin.php:430
 msgid "Please select a target text area first."
 msgstr ""
 
-#: DateSearchPlugin.php:439
+#: DateSearchPlugin.php:432
 msgid "Please select a date or time span to convert."
 msgstr ""
 
-#: DateSearchPlugin.php:440
+#: DateSearchPlugin.php:433
 msgid "Can not edit selected date as %."
 msgstr ""
 
-#: DateSearchPlugin.php:441
+#: DateSearchPlugin.php:434
 msgid "Can not convert selected date to %, as it is already %."
 msgstr ""
 
-#: DateSearchPlugin.php:442
+#: DateSearchPlugin.php:435
 msgid "Date Entry"
 msgstr ""
 
