@@ -279,7 +279,7 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 			if ($text !== false) {
 
 				$cookedDates = SELF::_processDateText($text);
-				# echo "<pre>"; print_r($cookedDates); die("</pre>");
+				// echo "<pre>" . print_r($cookedDates,true) . "</pre>"; die();
 
 				if ($cookedDates) {
 
@@ -484,12 +484,14 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 			// 2 == optional prefix: honor if present, but also parse dates without prefix
 			case 2 : $mainRegEx = $regEx["optionalJulGregTimeSpan"]; break;
 		}
+		$mainRegEx = "\b$mainRegEx\b";
 
 		$allCount = preg_match_all( "($mainRegEx)i", $text, $allMatches);
-		# echo "<pre>Count: $allCount\n" . print_r($allMatches,true) . "</pre>";
+		// echo "<p>$text</p>";
+		// echo "<pre>Count: $allCount\n" . print_r($allMatches,true) . "</pre>"; // die();
 
 		$cookedDates = array();
-		foreach($allMatches[0] as $singleMatch) {
+		foreach(array_unique($allMatches[0]) as $singleMatch) {
 			$singleCount = preg_match_all ( "($date)", $singleMatch, $singleSplit );
 			$timespan = array();
 			$timespan[] = $singleSplit[0][0];
@@ -512,8 +514,7 @@ class DateSearchPlugin extends Omeka_Plugin_AbstractPlugin {
 
 			if ($storeDate) { $cookedDates[] = $timespan; }
 		}
-		# echo "<pre>" . print_r($cookedDates,true) . "</pre>";
-		# die();
+		// echo "<pre>" . print_r($cookedDates,true) . "</pre>"; die();
 
 		return $cookedDates;
 	}
